@@ -55,16 +55,21 @@
 
 		document.querySelector(".total-section").innerHTML = document.querySelector(".subtotal-section-calculation").outerHTML;
 		if (document.querySelector('[data-invoice-calculations-target="invoiceTotal"]').innerHTML.substr(1) == "0.00") {
-			document.querySelector("#btn-download").disabled = true;
+			document.querySelector("#btn-download").addEventListener("click", alert_msg);
 		} else {
-			document.querySelector("#btn-download").disabled = false;
+			document.querySelector("#btn-download").addEventListener("click", Go_download);
 		}
 
 
 
 
 	}
-
+function alert_msg() {
+alert("Please fill at least one item to download invoice.");	
+}
+function Go_download() {
+download_invoice();	
+}
 	for (var n = 0; n < document.querySelectorAll("input").length; n++) { document.querySelectorAll("input")[n].onkeyup = function () { invoice_update(); } } for (var n = 0; n < document.querySelectorAll("textarea").length; n++) { document.querySelectorAll("textarea")[n].onkeyup = function () { invoice_update(); } }
 
 	function change_view() {
